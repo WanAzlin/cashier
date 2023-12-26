@@ -8,23 +8,34 @@ void main() {
 
 const List<Item> _items = [
   Item(
-      name: 'Nasi Ayam',
-      totalPriceCents: 999,
+      name: 'Pizza Veg',
+      totalPriceCents: 2199,
       uid: '1',
       imageProvider: NetworkImage(
-          'https://images.unsplash.com/photo-1630910104722-21fe97230ef9?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=300')),
+          'https://plus.unsplash.com/premium_photo-1675451537771-0dd5b06b3985?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+      stock: '2 pieces left',),
+  
   Item(
-      name: 'Nasi Lemak',
-      totalPriceCents: 899,
+      name: 'Ice Mokito',
+      totalPriceCents: 1590,
       uid: '2',
       imageProvider: NetworkImage(
-          'https://media.istockphoto.com/id/1471904035/photo/nasi-uduk-indonesian-savoury-steam-rice-cooked-in-coconut-milk.webp?b=1&s=170667a&w=0&k=20&c=nS3khK0AOM1smvVz2l7hZm8I6_OYWzj0LXy79uiFULI=')),
+          'https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=2272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), 
+      stock: '2 Piece Left',),
   Item(
-      name: 'Satay',
-      totalPriceCents: 1499,
+      name: 'Pizza Tuna',
+      totalPriceCents: 2499,
       uid: '3',
       imageProvider: NetworkImage(
-          'https://images.unsplash.com/photo-1603088549155-6ae9395b928f?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')),
+          'https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=2243&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), 
+      stock: '2 Piece Left',),
+  Item(
+      name: 'Juice',
+      totalPriceCents: 1250,
+      uid: '4',
+      imageProvider: NetworkImage(
+          'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), 
+      stock: '2 Piece Left',),
   
 ];
 
@@ -229,6 +240,16 @@ class CustomerCart extends StatelessWidget {
                                   fontSize: 12,
                                 ),
                       ),
+                       Text(
+                        'Proceed To Pay >>',
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  color: Colors.redAccent,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                      ),
+                      
                     ],
                   ),
                 )
@@ -246,12 +267,14 @@ class MenuListItem extends StatelessWidget {
     this.price = '',
     required this.photoProvider,
     this.isDepressed = false,
+    this.stock ='', 
   });
 
   final String name;
   final String price;
   final ImageProvider photoProvider;
   final bool isDepressed;
+  final String stock; 
 
   @override
   Widget build(BuildContext context) {
@@ -349,7 +372,8 @@ class Item {
     required this.totalPriceCents,
     required this.name,
     required this.uid,
-    required this.imageProvider,
+    required this.imageProvider, 
+    required String stock,
   });
 
   final int totalPriceCents;
