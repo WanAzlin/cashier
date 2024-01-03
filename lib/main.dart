@@ -8,35 +8,37 @@ void main() {
 
 const List<Item> _items = [
   Item(
-      name: 'Pizza Veg',
-      totalPriceCents: 2199,
-      uid: '1',
-      imageProvider: NetworkImage(
-          'https://plus.unsplash.com/premium_photo-1675451537771-0dd5b06b3985?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-      stock: '2 pieces left',),
-  
+    name: 'Pizza Veg',
+    totalPriceCents: 2199,
+    uid: '1',
+    imageProvider: NetworkImage(
+        'https://plus.unsplash.com/premium_photo-1675451537771-0dd5b06b3985?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+    stock: '2 pieces left',
+  ),
   Item(
-      name: 'Ice Mokito',
-      totalPriceCents: 1590,
-      uid: '2',
-      imageProvider: NetworkImage(
-          'https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=2272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), 
-      stock: '2 Piece Left',),
+    name: 'Ice Mokito',
+    totalPriceCents: 1590,
+    uid: '2',
+    imageProvider: NetworkImage(
+        'https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=2272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+    stock: '2 Piece Left',
+  ),
   Item(
-      name: 'Pizza Tuna',
-      totalPriceCents: 2499,
-      uid: '3',
-      imageProvider: NetworkImage(
-          'https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=2243&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), 
-      stock: '2 Piece Left',),
+    name: 'Pizza Tuna',
+    totalPriceCents: 2499,
+    uid: '3',
+    imageProvider: NetworkImage(
+        'https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=2243&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+    stock: '2 Piece Left',
+  ),
   Item(
-      name: 'Juice',
-      totalPriceCents: 1250,
-      uid: '4',
-      imageProvider: NetworkImage(
-          'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), 
-      stock: '2 Piece Left',),
-  
+    name: 'Juice',
+    totalPriceCents: 1250,
+    uid: '4',
+    imageProvider: NetworkImage(
+        'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+    stock: '2 Piece Left',
+  ),
 ];
 
 class MyApp extends StatelessWidget {
@@ -62,17 +64,19 @@ class _OrderingAppState extends State<OrderingApp>
   final List<Customer> _people = [
     Customer(
       name: 'Table 1',
-      imageProvider: const NetworkImage('https://th.bing.com/th/id/OIP.ipp7AwkJ1y5j-FPq9OiQxgHaHa?rs=1&pid=ImgDetMain'),
+      imageProvider: const NetworkImage(
+          'https://th.bing.com/th/id/OIP.ipp7AwkJ1y5j-FPq9OiQxgHaHa?rs=1&pid=ImgDetMain'),
     ),
     Customer(
       name: 'Table 2',
-      imageProvider: const NetworkImage('https://th.bing.com/th/id/OIP.ipp7AwkJ1y5j-FPq9OiQxgHaHa?rs=1&pid=ImgDetMain'),
+      imageProvider: const NetworkImage(
+          'https://th.bing.com/th/id/OIP.ipp7AwkJ1y5j-FPq9OiQxgHaHa?rs=1&pid=ImgDetMain'),
     ),
     Customer(
       name: 'Table 3',
-      imageProvider: const NetworkImage('https://th.bing.com/th/id/OIP.ipp7AwkJ1y5j-FPq9OiQxgHaHa?rs=1&pid=ImgDetMain'),
+      imageProvider: const NetworkImage(
+          'https://th.bing.com/th/id/OIP.ipp7AwkJ1y5j-FPq9OiQxgHaHa?rs=1&pid=ImgDetMain'),
     )
-    
   ];
 
   final GlobalKey _draggableKey = GlobalKey();
@@ -157,7 +161,6 @@ class _OrderingAppState extends State<OrderingApp>
         child:
             DragTarget<Item>(builder: (context, candidateItems, rejectedItems) {
           return CustomerCart(
-            hasItems: customer.items.isNotEmpty,
             highlighted: candidateItems.isNotEmpty,
             customer: customer,
           );
@@ -169,54 +172,67 @@ class _OrderingAppState extends State<OrderingApp>
   }
 }
 
-class CustomerCart extends StatelessWidget {
+class CustomerCart extends StatefulWidget {
   const CustomerCart({
     super.key,
     required this.customer,
     this.highlighted = false,
-    this.hasItems = false,
   });
 
   final Customer customer;
   final bool highlighted;
-  final bool hasItems;
 
   @override
+  State<CustomerCart> createState() => _CustomerCartState();
+}
+
+class _CustomerCartState extends State<CustomerCart> {
+  @override
   Widget build(BuildContext context) {
-    final textColor = highlighted ? Colors.white : Colors.black;
+    final textColor = widget.highlighted ? Colors.white : Colors.black;
 
     return Transform.scale(
-        scale: highlighted ? 1.075 : 1.0,
+        scale: widget.highlighted ? 1.075 : 1.0,
         child: Material(
-          elevation: highlighted ? 8 : 4,
+          elevation: widget.highlighted ? 8 : 4,
           borderRadius: BorderRadius.circular(22),
-          color: highlighted ? const Color(0xFFF64209) : Colors.white,
+          color: widget.highlighted ? const Color(0xFFF64209) : Colors.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      widget.customer.items.clear();
+                    });
+                  },
+                  child: const Icon(Icons.delete),
+                ),
                 ClipOval(
                   child: SizedBox(
                     width: 46,
                     height: 46,
-                    child:
-                        Image(image: customer.imageProvider, fit: BoxFit.cover),
+                    child: Image(
+                        image: widget.customer.imageProvider,
+                        fit: BoxFit.cover),
                   ),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  customer.name,
+                  widget.customer.name,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: textColor,
-                        fontWeight:
-                            hasItems ? FontWeight.normal : FontWeight.bold,
+                        fontWeight: widget.customer.items.isNotEmpty
+                            ? FontWeight.normal
+                            : FontWeight.bold,
                       ),
                 ),
                 Visibility(
-                  visible: hasItems,
+                  visible: widget.customer.items.isNotEmpty,
                   maintainState: true,
                   maintainAnimation: true,
                   maintainSize: true,
@@ -224,7 +240,7 @@ class CustomerCart extends StatelessWidget {
                     children: [
                       const SizedBox(height: 4),
                       Text(
-                        customer.formattedTotalItemPrice,
+                        widget.customer.formattedTotalItemPrice,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: textColor,
                               fontSize: 16,
@@ -233,14 +249,14 @@ class CustomerCart extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${customer.items.length} item${customer.items.length != 1 ? 's' : ''}',
+                        '${widget.customer.items.length} item${widget.customer.items.length != 1 ? 's' : ''}',
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: textColor,
                                   fontSize: 12,
                                 ),
                       ),
-                       Text(
+                      Text(
                         'Proceed To Pay >>',
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -249,7 +265,6 @@ class CustomerCart extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                       ),
-                      
                     ],
                   ),
                 )
@@ -267,14 +282,14 @@ class MenuListItem extends StatelessWidget {
     this.price = '',
     required this.photoProvider,
     this.isDepressed = false,
-    this.stock ='', 
+    this.stock = '',
   });
 
   final String name;
   final String price;
   final ImageProvider photoProvider;
   final bool isDepressed;
-  final String stock; 
+  final String stock;
 
   @override
   Widget build(BuildContext context) {
@@ -372,7 +387,7 @@ class Item {
     required this.totalPriceCents,
     required this.name,
     required this.uid,
-    required this.imageProvider, 
+    required this.imageProvider,
     required String stock,
   });
 
@@ -381,7 +396,7 @@ class Item {
   final String uid;
   final ImageProvider imageProvider;
   String get formattedTotalItemPrice =>
-      '\$${(totalPriceCents / 100.0).toStringAsFixed(2)}';
+      'RM${(totalPriceCents / 100.0).toStringAsFixed(2)}';
 }
 
 class Customer {
@@ -398,6 +413,6 @@ class Customer {
   String get formattedTotalItemPrice {
     final totalPriceCents =
         items.fold<int>(0, (prev, item) => prev + item.totalPriceCents);
-    return '\$${(totalPriceCents / 100.0).toStringAsFixed(2)}';
+    return 'RM${(totalPriceCents / 100.0).toStringAsFixed(2)}';
   }
 }
